@@ -14,6 +14,19 @@ parser.add_argument('--batch_size', type = int, default = 64,
 
 args = parser.parse_args()
 
+def apply_configure(args):
+	# GPU Mode
+	gpus = []
+	for i in range(16):
+		try:
+			out = subprocess.check_output(['nvidia-smi', '-i', str(i)]).decode('utf-8').split('\n')
+			if out[15].find('No running') != -1:
+				gpus.append(str(i))
+				break
+		except:
+			break
+	os.environ["CUDA_VISIBLE_DEVICES"] = ','.join(gpus)
+
 if __name__ == '__main__':
 
 	# GPU Configuration
