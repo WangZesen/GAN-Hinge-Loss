@@ -37,12 +37,20 @@ def train(args):
 		gen_metric(gen_loss)
 		dis_metric(dis_loss)
 
-	for i in range(10):
+	def test_step():
+		z = tf.random.normal([args.batch_size, args.noise_dim])
+		fake_sample = generator(z)
+		return fake_sample
+
+	plot(test_step(), 'samples', 0)
+	for i in range(50):
 
 		for batch in dataset:
 			train_one_step(batch)
 
 		print (f'Epoch {i + 1}, Gen Loss: {gen_metric.result()}, Dis Loss: {dis_metric.result()}')
+		plot(test_step(), 'samples', i + 1)
+
 
 
 
