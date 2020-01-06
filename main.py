@@ -1,4 +1,6 @@
 import argparse
+import subprocess
+import os
 from train import train
 import tensorflow as tf
 
@@ -30,6 +32,7 @@ def apply_configure(args):
 if __name__ == '__main__':
 
 	# GPU Configuration
+	apply_configure(args)
 	gpus = tf.config.experimental.list_physical_devices(device_type='GPU')
 	for gpu in gpus:
 		tf.config.experimental.set_memory_growth(gpu, True)
