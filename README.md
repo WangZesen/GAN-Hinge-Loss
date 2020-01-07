@@ -19,3 +19,10 @@ An implementation of hinge version of GAN loss from Geometric GAN (https://arxiv
 
 ### Trained After 400 Epochs
 ![Epoch 400](../master/samples/400.jpg?raw=true)
+
+Comments:
+1. The hinge loss did not oscillate much during the training.
+2. It seems to take much time for convergence. It did not converge at the end. (The convergence state is `gen_loss=0` and `dis_loss=2`)
+
+Todo:
+- [ ] Plot training loss curve
