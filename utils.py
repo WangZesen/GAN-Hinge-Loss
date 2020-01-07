@@ -25,4 +25,4 @@ def plot(images, save_dir, step):
     for i in range(n):
         for j in range(n):
             image[(width + pad) * i:(width + pad) * i + width, (width + pad) * j:(width + pad) * j + width] = images[i * n + j][:, :, 0]
-    plt.imsave(os.path.join(save_dir, f'{step}.jpg'), image, cmap = 'gray')
+    plt.imsave(os.path.join(save_dir, f'{str(step).zfill(3)}.jpg'), image, cmap = 'gray')

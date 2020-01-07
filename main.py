@@ -7,7 +7,7 @@ import tensorflow as tf
 parser = argparse.ArgumentParser()
 parser.add_argument('--dataset', type = str, choices = ['mnist'], 
 	default = 'mnist', help = 'choice of dataset')
-parser.add_argument('--learning_rate', type = float, default = 1e-4,
+parser.add_argument('--learning_rate', type = float, default = 5e-5,
 	help = 'initial learning rate')
 parser.add_argument('--noise_dim', type = int, default = 32,
 	help = 'dimension of random noise')

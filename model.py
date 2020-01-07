@@ -18,11 +18,12 @@ class Generator(tf.keras.Model):
 		super(Generator, self).__init__(name = name)
 		self.fc1 = tf.keras.layers.Dense(7 * 7 * 128)
 		self.reshape = tf.keras.layers.Reshape([7, 7, 128])
-		self.deconv1 = tf.keras.layers.Conv2DTranspose(64, 7, 2, activation = tf.nn.leaky_relu, padding = 'same')
-		self.deconv2 = tf.keras.layers.Conv2DTranspose(64, 7, 2, activation = tf.nn.leaky_relu, padding = 'same')
-		self.deconv3 = tf.keras.layers.Conv2D(1, 3, 1, activation = tf.nn.tanh, padding = 'same')
+		self.deconv1 = tf.keras.layers.Conv2DTranspose(128, 7, 2, activation = tf.nn.leaky_relu, padding = 'same')
+		self.deconv2 = tf.keras.layers.Conv2DTranspose(128, 7, 2, activation = tf.nn.leaky_relu, padding = 'same')
+		self.deconv3 = tf.keras.layers.Conv2DTranspose(64, 7, 1, activation = tf.nn.leaky_relu, padding = 'same')
+		self.deconv4 = tf.keras.layers.Conv2D(1, 3, 1, activation = tf.nn.tanh, padding = 'same')
 		
-		self.gen_layers = [self.fc1, self.reshape, self.deconv1, self.deconv2, self.deconv3]
+		self.gen_layers = [self.fc1, self.reshape, self.deconv1, self.deconv2, self.deconv3, self.deconv4]
 	def call(self, x):
 		for layer in self.gen_layers:
 			x = layer(x)

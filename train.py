@@ -9,7 +9,7 @@ def train(args):
 	discriminator = Discriminator(args)
 
 	gen_opt = tf.keras.optimizers.Adam(args.learning_rate)
-	dis_opt = tf.keras.optimizers.Adam(args.learning_rate * 5)
+	dis_opt = tf.keras.optimizers.Adam(args.learning_rate * 2)
 
 	gen_metric = tf.keras.metrics.Mean(name = 'Generator_Loss')
 	dis_metric = tf.keras.metrics.Mean(name = 'Discriminator_Loss')
@@ -43,13 +43,15 @@ def train(args):
 		return fake_sample
 
 	plot(test_step(), 'samples', 0)
-	for i in range(50):
+	for i in range(400):
 
 		for batch in dataset:
 			train_one_step(batch)
-
-		print (f'Epoch {i + 1}, Gen Loss: {gen_metric.result()}, Dis Loss: {dis_metric.result()}')
-		plot(test_step(), 'samples', i + 1)
+		if (i + 1) % 2 == 0:
+			print (f'Epoch {i + 1}, Gen Loss: {gen_metric.result()}, Dis Loss: {dis_metric.result()}')
+			plot(test_step(), 'samples', i + 1)
+		gen_metric.reset_states()
+		dis_metric.reset_states()
 
 
 
