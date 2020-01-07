@@ -5,8 +5,8 @@ An implementation of hinge version of GAN loss from Geometric GAN (https://arxiv
 ### Trained After 0 Epochs
 ![Epoch 0](../master/samples/000.jpg?raw=true)
 
-### Trained After 25 Epochs
-![Epoch 25](../master/samples/025.jpg?raw=true)
+### Trained After 10 Epochs
+![Epoch 25](../master/samples/010.jpg?raw=true)
 
 ### Trained After 50 Epochs
 ![Epoch 50](../master/samples/050.jpg?raw=true)
